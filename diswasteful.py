@@ -1,7 +1,9 @@
 #imports discord.py library and commands
 import discord
+import asyncio
 from discord.ext import commands
 from recipe_store import get_random_recipe
+from recipe_store import add_recipe
 TOKEN = ''
 
 #defines the dictionary holding the list of items in the users pantry
@@ -61,6 +63,61 @@ async def recipe(ctx):
 
     await ctx.send(msg)
 
+#helper function that checks the author and allows for a timeout in the addrecipe function
+async def ask_question(ctx, question, timeout=60):
+    await ctx.send(question)
+
+    def check(msg):
+        return msg.author == ctx.author and msg.channel == ctx.channel
+    
+    try:
+        msg = await ctx.bot.wait_for("message", check=check, timeout=timeout)
+        if msg.content.lower() == "cancel":
+            return None
+        return msg.content.strip()
+    except asyncio.TimeoutError:
+        return None
+
+#command that lets you add a recipe to the database from discord
+@bot.command()
+async def addrecipe(ctx):
+    await ctx.send("Let's add a recipe. Type **cancel** at any time to stop.")
+
+    name = await ask_question(ctx, "Recipe name?")
+    if not name:
+        await ctx.send("Cancelled.")
+        return
+    
+    url = await ask_question(ctx, "Recipe URL?")
+    if not url:
+        await ctx.send("Cancelled.")
+        return
+    
+    source = await ask_question(ctx, "Recipe source?")
+    if not source:
+        await ctx.send("Cancelled.")
+        return
+    
+    category = await ask_question(ctx, "Category? (e.g. Dinner, Dessert)")
+    if not category:
+        await ctx.send("Cancelled.")
+        return
+    
+    tags_input = await ask_question(ctx, "Tags? (comma-seperated, optional)")
+    tags = [t.strip() for t in tags_input.split(",")] if tags_input else []
+
+    success = add_recipe(
+        name=name,
+        url=url,
+        source=source,
+        category=category,
+        tags=tags
+    )
+
+    if success:
+        await ctx.send("Recipe added successfully.")
+    else:
+        await ctx.send("That recipe already exists.")
 
 @bot.command()
 async def pantry(ctx):

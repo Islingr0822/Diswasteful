@@ -17,7 +17,7 @@ def save_db(data):
         json.dump(data, f, indent=2)
 
 #function that allows us to add new recipes to our database wothout manually editing the file
-def add_recipe(name, url, source=None, category=None, tags=None):
+def add_recipe(name, url, source, category, tags):
     db = load_db()
 
     #loop to prevent duplicate recipes

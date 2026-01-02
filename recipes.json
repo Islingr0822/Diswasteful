@@ -1,11 +1,64 @@
 {
   "recipes": [
     {
-       "name": "Classic Chicken Alfredo",
-       "url": "https://www.allrecipes.com/recipe/276725/creamy-chicken-alfredo/",
-       "source": "AllRecipes",
-       "category": "Dinner",
-       "tags": ["chicken", "pasta", "italian"]
+      "name": "Classic Chicken Alfredo",
+      "url": "https://www.allrecipes.com/recipe/276725/creamy-chicken-alfredo/",
+      "source": "AllRecipes",
+      "category": "Dinner",
+      "tags": [
+        "chicken",
+        "pasta",
+        "italian"
+      ]
+    },
+    {
+      "name": "Italian Bread",
+      "url": "https://amandascookin.com/italian-bread-recipe/",
+      "source": "Amanda's Cookin",
+      "category": "Bread",
+      "tags": [
+        "bread",
+        "italian"
+      ]
+    },
+    {
+      "name": "Beef Stew",
+      "url": "https://www.spendwithpennies.com/beef-stew-recipe/",
+      "source": "Spend with Pennies",
+      "category": "Dinner",
+      "tags": [
+        "soup",
+        "beef"
+      ]
+    },
+    {
+      "name": "Raising Cane's Chicken",
+      "url": "https://www.thecountrycook.net/raising-canes-chicken-fingers/",
+      "source": "The Country Cook",
+      "category": "Lunch",
+      "tags": [
+        "chicken"
+      ]
+    },
+    {
+      "name": "Loaded Potato Soup",
+      "url": "https://sugarspunrun.com/creamy-potato-soup-recipe/",
+      "source": "Super Spun Run",
+      "category": "Dinner",
+      "tags": [
+        "soup",
+        "potato"
+      ]
+    },
+    {
+      "name": "Beef Enchiladas",
+      "url": "https://www.oldelpaso.com/recipes/easy-beef-enchiladas",
+      "source": "Old El Paso",
+      "category": "Dinner",
+      "tags": [
+        "beef",
+        "mexican"
+      ]
     }
   ]
 }
