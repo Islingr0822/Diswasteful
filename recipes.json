@@ -1,0 +1,11 @@
+{
+  "recipes": [
+    {
+       "name": "Classic Chicken Alfredo",
+       "url": "https://www.allrecipes.com/recipe/276725/creamy-chicken-alfredo/",
+       "source": "AllRecipes",
+       "category": "Dinner",
+       "tags": ["chicken", "pasta", "italian"]
+    }
+  ]
+}

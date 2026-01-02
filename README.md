@@ -1,2 +1,2 @@
 # Diswasteful
-Food managment discord bot 
+Food management discord bot 

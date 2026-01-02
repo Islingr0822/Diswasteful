@@ -1,6 +1,7 @@
 #imports discord.py library and commands
 import discord
 from discord.ext import commands
+from recipe_store import get_random_recipe
 TOKEN = ''
 
 #defines the dictionary holding the list of items in the users pantry
@@ -45,6 +46,21 @@ async def on_ready():
 @bot.command() #funtion to ping bot
 async def ping(ctx):
     await ctx.send('Pong!')
+
+#command to grab a random recipe and send it
+@bot.command()
+async def recipe(ctx):
+    recipe = get_random_recipe()
+    if not recipe:
+        await ctx.send("No recipes available.")
+        return
+    
+    msg = f"**{recipe['name']}**\n{recipe['url']}"
+    if recipe["source"]:
+        msg += f"\nSource: {recipe['source']}"
+
+    await ctx.send(msg)
+
 
 @bot.command()
 async def pantry(ctx):
